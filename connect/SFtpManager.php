@@ -65,6 +65,8 @@ class SFtpManager extends Component
      */
     public function scanDir($dir = ".", $recursive = false)
     {
+        $this->elements = [];
+        
         $list = $this->connect->rawlist($dir, $recursive);
         usort($list, function ($attr) {
             return ($attr["type"] == self::TYPE_DIR) ? 0 : 1;
